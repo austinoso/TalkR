@@ -13,8 +13,8 @@ class User < ApplicationRecord
     has_many :user_languages
     has_many :languages, through: :user_languages
 
-    # def chats
-    #     Chat.all.find_by(primary_id: self.id)
-    # end
+    def chats
+        Chat.all.find_by(primary_id: self.id)
+    end
 end
 
