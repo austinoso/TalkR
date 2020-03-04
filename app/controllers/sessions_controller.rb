@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:success] = "Successfully logged in"
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to chats_path
     elsif !@user
       flash[:no_user] = "User does not exist, please sign up!"
       redirect_to new_user_path

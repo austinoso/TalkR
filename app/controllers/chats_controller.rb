@@ -1,5 +1,7 @@
 class ChatsController < ApplicationController
     before_action :set_chat, only: [:show, :destroy, :edit, :update, :add_user, :remove_user]
+    before_action :chat_user_authorize, only: [:show]
+    before_action :chat_owner_authorize, only: [:edit, :update, :destroy]
 
     def index
         @chats = Chat.all.select { |chat| chat.users.include? current_user }
@@ -63,4 +65,14 @@ class ChatsController < ApplicationController
     def set_chat
         @chat = Chat.find(params[:id])
     end
+
+    def chat_user_authorize
+        redirect_to chats_path if !@chat.users.include? current_user
+    end
+
+    def chat_owner_authorize
+        redirect_to chats_path if @chat.owner_id != session[:user_id]
+        flash[:warning] = "You dont have admin rights!" if @chat.owner_id != session[:user_id]
+    end
+
 end
