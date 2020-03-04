@@ -1,8 +1,4 @@
-<% if flash[:errors] && flash[:errors].any? %>
-  <% flash[:errors].each do |e| %>
-    <p><%= e %></p>
-  <% end %>
-<% end %>
+<%= flash[:error] %>
 
 <h1>Log In</h1>
 

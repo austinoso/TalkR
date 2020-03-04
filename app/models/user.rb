@@ -2,6 +2,7 @@ class User < ApplicationRecord
     # belongs_to :user1, class_name: 'User'
     # belongs_to :user2, class_name: 'User'
     has_secure_password
+    # has_secure_password :password, validations: true
 
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true

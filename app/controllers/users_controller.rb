@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
-
         if @user.valid?
             session[:user_id] = @user.id
             flash[:notice] = "User successfully created"
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
     
     def update
         @user.update(user_params)
-
         if @user.valid?
             flash[:notice] = "User successfully edited"
             redirect_to @user
@@ -47,7 +45,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:password, :password_confirmation, :name, :email, :bio, :country)
+        params.require(:user).permit(:password, :password_confirmation, :name, :email)
     end
 
     def set_user
