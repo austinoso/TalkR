@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_225014) do
+ActiveRecord::Schema.define(version: 2020_03_04_001738) do
 
   create_table "chat_users", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2020_03_03_225014) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "owner_id"
+    t.integer "primary_id"
+    t.integer "secondary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -53,11 +54,12 @@ ActiveRecord::Schema.define(version: 2020_03_03_225014) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
-    t.string "pass"
     t.string "bio"
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "password_confirmation"
   end
 
   add_foreign_key "chat_users", "chats"
