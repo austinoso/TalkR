@@ -11,7 +11,7 @@ Language.destroy_all
 
 
 10.times do
-    User.create(name: Faker::Name.name, email: Faker::Internet.email)
+    User.create({name: Faker::Name.name, email: Faker::Internet.email, password: "password", password_confirmation: "password", bio: Faker::Quote.famous_last_words, country: Faker::Address.country})
 end
 
 5.times do

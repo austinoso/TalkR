@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:new, :create]
+    skip_before_action :authorize, only: [:index, :show, :new, :create]
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
             session[:user_id] = @user.id
-            flash[:notice] = "User successfully created"
+            flash[:success] = "User successfully created!"
             redirect_to @user
         else
             render :new
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     def update
         @user.update(user_params)
         if @user.valid?
-            flash[:notice] = "User successfully edited"
+            flash[:notice] = "User successfully edited!"
             redirect_to @user
         else
             render :edit
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:password, :password_confirmation, :name, :email)
+        params.require(:user).permit(:password, :password_confirmation, :name, :email, :bio, :country)
     end
 
     def set_user
