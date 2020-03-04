@@ -1,28 +1,33 @@
 class ChatsController < ApplicationController
-    before_action :set_chat, only: [:show, :destroy]
+    before_action :set_chat, only: [:show, :destroy, :edit, :update, :add_user, :remove_user]
 
     def index
-        @chats = Chat.all.select { |chat| chat.users.include? User.first }
+        @chats = Chat.all.select { |chat| chat.users.include? current_user }
     end
 
     def show
-        @message = @chat.messages.build(user_id: User.first.id)
+        @message = @chat.messages.build(user_id: session[:user_id])
         @messages = @chat.messages[0...-1]
     end
 
+    def edit
+        @current_users = @chat.users
+        @users = User.all - @current_users
+    end
+
+    def update
+        @chat.update(chat_params)
+    end
+
     def new
-        @chat = Chat.new
+        @chat = Chat.new(owner_id: session[:user_id])
+        @chat.chat_users.build
     end
 
     def create
         @chat = Chat.create(chat_params)
-
-        if @chat.valid?
-            flash[:notice] = "chat successfully created"
-            redirect_to @chat
-        else
-            render :new
-        end
+        @chat.users << current_user
+        redirect_to @chat
     end
 
     def destroy
@@ -30,15 +35,30 @@ class ChatsController < ApplicationController
         redirect_to chats_path
     end
 
+    def add_user
+        @chat.users << (User.find(params[:user_id]))
+        @chat.save
+        redirect_to edit_chat_path
+    end
+
+    def remove_user
+        @chat.users.delete(User.find(params[:user_id]))
+        @chat.save
+        redirect_to edit_chat_path
+    end
+
     private
 
     def chat_params
         params.require(:chat).permit(
-            :primary_id,
-            :secondary_id
+            :owner_id,
+            :name,
+            chat_users_attributes: [
+                :user_id,
+                :chat_id
+            ]
         )
     end
-
 
     def set_chat
         @chat = Chat.find(params[:id])

@@ -6,11 +6,8 @@ class MessagesController < ApplicationController
     def create
         @msg = Message.create(msg_params)
         @msg.user_id = session
-        byebug
 
-        if @msg.valid?
-            redirect_to @msg.chat
-        end
+        redirect_to @msg.chat
     end
 
     def destroy

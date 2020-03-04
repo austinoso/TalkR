@@ -1,0 +1,7 @@
+<%= form_for @chat do |f| %>
+    <%= f.hidden_field :owner_id %>
+    <%= f.label "Custom Chat Name"%>
+    <%= f.text_field :name %>
+    <%= f.submit "Create Channel" %>
+
+<% end %>
