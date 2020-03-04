@@ -6,6 +6,10 @@
   <% end %>
 <% end %>
 
+<% if flash[:no_user] %>
+    <p><%= flash[:no_user] %></p>
+<% end %>
+
 
 <%= form_for(@user) do |f| %>
 
