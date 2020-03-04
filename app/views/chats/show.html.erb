@@ -11,4 +11,6 @@
 
 <% end %>
 
-<p><%= link_to "edit chat", edit_chat_path %></p>
+<% if @chat.owner_id == session[:user_id] %>
+    <p><%= link_to "edit chat", edit_chat_path %></p>
+<% end %>
