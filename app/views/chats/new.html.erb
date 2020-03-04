@@ -1,12 +1,7 @@
 <%= form_for @chat do |f| %>
     <%= f.hidden_field :owner_id %>
-
-        <%= f.fields_for :chat_users do |user| %>
-            <div>
-                <%= user.label "Select User" %>
-                <%= user.collection_select :user_id, User.all, :id, :name %>
-            </div>
-        <% end %>
-        <%= f.submit "Start Chat" %>
+    <%= f.label "Custom Chat Name"%>
+    <%= f.text_field :name %>
+    <%= f.submit "Create Channel" %>
 
 <% end %>
