@@ -1,4 +1,4 @@
 <% @chats.each do |chat| %>
-    <h4><%= link_to chat.user.name, chat %></h4>
+    <h4><%= link_to chat.users[0].name, chat %></h4>
     <hr>
 <% end %>

@@ -1,9 +1,7 @@
 class Chat < ApplicationRecord
-    belongs_to :primary, class_name: 'User'
-    belongs_to :secondary, class_name: 'User'
     has_many :messages, dependent: :destroy
+    has_many :chat_users
+    has_many :users, through: :chat_users
 
-    def user
-        primary == self ?  primary : secondary
-    end
+    belongs_to :owner, class_name: :User
 end

@@ -2,12 +2,7 @@ class ChatsController < ApplicationController
     before_action :set_chat, only: [:show, :destroy]
 
     def index
-        if true
-            @chats = Chat.all.select { |c| c.primary_id == User.first.id }
-        else
-            redirect_to new_user_path
-        end
-        
+        @chats = Chat.all.select { |chat| chat.users.include? User.first }
     end
 
     def show
