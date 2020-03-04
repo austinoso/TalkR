@@ -4,4 +4,6 @@ class Chat < ApplicationRecord
     has_many :users, through: :chat_users
 
     belongs_to :owner, class_name: :User
+
+    accepts_nested_attributes_for :chat_users
 end

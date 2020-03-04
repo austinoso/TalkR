@@ -1,8 +1,8 @@
 <% @chats.each do |chat| %>
     <%= link_to chat, :action => 'go' do %>
         <div>
-            <h4><%= chat.users[1].name %></h4>
-            <p><%= chat.messages.last.content   %></p>
+            <h4><%= chat.users[0].name %></h4>
+            <p><%= chat.messages.last.content %></p>
         </div>
     <% end %>
     <hr>

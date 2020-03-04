@@ -11,18 +11,15 @@ class ChatsController < ApplicationController
     end
 
     def new
-        @chat = Chat.new
+        @chat = Chat.new(owner_id: User.first.id)
+        @chat.chat_users.build
     end
 
     def create
+        byebug
         @chat = Chat.create(chat_params)
-
-        if @chat.valid?
-            flash[:notice] = "chat successfully created"
-            redirect_to @chat
-        else
-            render :new
-        end
+        @chat.users  << User.first
+        redirect_to @chat
     end
 
     def destroy
@@ -34,11 +31,13 @@ class ChatsController < ApplicationController
 
     def chat_params
         params.require(:chat).permit(
-            :primary_id,
-            :secondary_id
+            :owner_id,
+            chat_users_attributes: [
+                :user_id,
+                :chat_id
+            ]
         )
     end
-
 
     def set_chat
         @chat = Chat.find(params[:id])
