@@ -18,6 +18,7 @@ class UsersController < ApplicationController
         if @user.valid?
             session[:user_id] = @user.id
             flash[:notice] = "User successfully created"
+            UserMailer.with(user: @user).welcome_email.deliver_later
             redirect_to @user
         else
             render :new

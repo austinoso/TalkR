@@ -2,23 +2,23 @@ class ChatsController < ApplicationController
     before_action :set_chat, only: [:show, :destroy]
 
     def index
-        @chats = Chat.all.select { |chat| chat.users.include? User.first }
+        @chats = Chat.all.select { |chat| chat.users.include? current_user }
     end
 
     def show
-        @message = @chat.messages.build(user_id: User.first.id)
+        @message = @chat.messages.build(user_id: session[:user_id])
         @messages = @chat.messages[0...-1]
     end
 
     def new
-        @chat = Chat.new(owner_id: User.first.id)
+        @chat = Chat.new(owner_id: session[:user_id])
         @chat.chat_users.build
     end
 
     def create
         byebug
         @chat = Chat.create(chat_params)
-        @chat.users  << User.first
+        @chat.users << current_user
         redirect_to @chat
     end
 

@@ -6,4 +6,8 @@ class Chat < ApplicationRecord
     belongs_to :owner, class_name: :User
 
     accepts_nested_attributes_for :chat_users
+
+    def name
+        self.members
+    end
 end
