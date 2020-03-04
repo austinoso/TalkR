@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :languages, only: [:index]
   resources :messages, except: [:new, :edit, :update]
   resources :chats
-  resources :users
+  resources :users, except: [:new]
 
   get '/login', to: 'sessions#new', as: 'login'
+  get '/register', to: 'users#new', as: 'register'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get 'chats/:id/add_user/user_id', to: 'chats#add_user', as: 'add_user'
