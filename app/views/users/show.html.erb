@@ -1,5 +1,7 @@
-<%= flash[:success] %>
+<p><%= flash[:success] %></p>
 <h1>Profile for: <%= @user.name %></h1>
 <p>Email: <%= @user.email %></p>
 <p>Bio: <%= @user.bio %></p>
 <p>Country: <%= @user.country %></p>
+<p>Preferred Language: <%= @user.language.name %></p>
+<p><%= link_to 'Edit your profile', edit_user_path %></p>

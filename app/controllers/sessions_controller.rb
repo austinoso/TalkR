@@ -11,8 +11,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to chats_path
     elsif !@user
-      flash[:no_user] = "User does not exist, please sign up!"
-      redirect_to new_user_path
+      flash[:no_user] = "User does not exist, please sign up or try again!"
+      redirect_to register_path
     else
       flash[:error] = "Wrong password!! Please try again"
       redirect_to login_path

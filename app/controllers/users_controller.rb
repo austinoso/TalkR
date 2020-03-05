@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     def update
         @user.update(user_params)
         if @user.valid?
-            flash[:notice] = "User successfully edited!"
+            flash[:success] = "User successfully edited!"
             redirect_to @user
         else
             render :edit
@@ -39,13 +39,13 @@ class UsersController < ApplicationController
 
     def destroy
         @user.destroy
-        redirect_to new_user_path
+        redirect_to register_path
     end
 
     private
 
     def user_params
-        params.require(:user).permit(:password, :password_confirmation, :name, :email, :bio, :country, :languages)
+        params.require(:user).permit(:password, :password_confirmation, :name, :email, :bio, :country, :language_id)
     end
 
     def set_user
