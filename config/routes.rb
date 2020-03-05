@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
   get 'chats/:id/add_user/user_id', to: 'chats#add_user', as: 'add_user'
   get 'chats/:id/remove_user/:user_id', to: 'chats#remove_user', as: 'remove_user'
+
+  post '/users/:id/add_contact', to: 'users#add_contact', as: 'add_contact'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
