@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_034256) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "primary_id"
-    t.integer "secondary_id"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
