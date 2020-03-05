@@ -17,7 +17,7 @@ User.destroy_all
 
 translator = Google::Cloud::Translate.new version: :v2, project_id: ENV["CLOUD_PROJECT_ID"]
 languages = translator.languages "en"
-languages.each { |lang| Language.create(name: lang.name, code: lang.code)}
+languages.each { |lang| Language.find_or_create_by(name: lang.name, code: lang.code)}
 
 10.times do
     User.create(
