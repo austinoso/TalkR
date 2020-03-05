@@ -7,8 +7,10 @@ class User < ApplicationRecord
     has_many :chat_users
     has_many :chats, foreign_key: :owner_id
     has_many :messages
-    has_many :user_languages
-    has_many :languages, through: :user_languages
+    belongs_to :language
+
+    # has_many :user_languages
+    # has_many :languages, through: :user_languages
 
 end
 

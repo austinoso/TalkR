@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_182220) do
+ActiveRecord::Schema.define(version: 2020_03_05_034256) do
 
   create_table "chat_users", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_182220) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "owner_id"
+    t.integer "primary_id"
+    t.integer "secondary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
@@ -42,15 +43,6 @@ ActiveRecord::Schema.define(version: 2020_03_04_182220) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_languages", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "language_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["language_id"], name: "index_user_languages_on_language_id"
-    t.index ["user_id"], name: "index_user_languages_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
@@ -60,10 +52,11 @@ ActiveRecord::Schema.define(version: 2020_03_04_182220) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "password_confirmation"
+    t.integer "language_id"
+    t.index ["language_id"], name: "index_users_on_language_id"
   end
 
   add_foreign_key "chat_users", "chats"
   add_foreign_key "chat_users", "users"
-  add_foreign_key "user_languages", "languages"
-  add_foreign_key "user_languages", "users"
+  add_foreign_key "users", "languages"
 end
