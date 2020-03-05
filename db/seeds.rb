@@ -10,11 +10,14 @@
 # require 'json'
 
 User.destroy_all
-Language.destroy_all
 
-5.times do
-    Language.create(name: Faker::Nation.language)
-end
+# 5.times do
+#     Language.create(name: Faker::Nation.language)
+# end
+
+translator = Google::Cloud::Translate.new version: :v2, project_id: ENV["CLOUD_PROJECT_ID"]
+languages = translator.languages "en"
+languages.each { |lang| Language.create(name: lang.name, code: lang.code)}
 
 10.times do
     User.create(
