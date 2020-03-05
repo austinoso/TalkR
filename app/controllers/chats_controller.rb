@@ -72,7 +72,7 @@ class ChatsController < ApplicationController
 
     def chat_owner_authorize
         redirect_to chats_path if @chat.owner_id != session[:user_id]
-        flash[:warning] = "You dont have admin rights!" if @chat.owner_id != session[:user_id]
+        flash[:warning] = "You don't have admin rights!" if @chat.owner_id != session[:user_id]
     end
 
 end
