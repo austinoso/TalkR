@@ -7,10 +7,10 @@
 <p>Contacts: 
 <ul>
 <% @user.contacts.each do |contact| %>
-    <li><%= contact.name %></li>
+    <li><%= link_to contact.name, contact %></li>
     <% end %>
-</ul>
-</p>
+</ul></p>
+
 <% if @current_user == @user %>
 <p><%= link_to 'Edit your profile', edit_user_path %></p>
 <% end %>
