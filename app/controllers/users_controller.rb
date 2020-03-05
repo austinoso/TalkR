@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:index, :show, :new, :create]
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
 
     def index
         @users = User.all
@@ -40,6 +40,12 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
         redirect_to register_path
+    end
+
+    def add_contact
+        @current_user = User.find(session[:user_id])
+        current_user.contacts << @user
+        redirect_to @current_user
     end
 
     private
