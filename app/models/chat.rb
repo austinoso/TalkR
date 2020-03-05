@@ -11,4 +11,7 @@ class Chat < ApplicationRecord
         self.name ? self.name : self.users.map { |u| u.name }.join(' and ')
     end
 
+    def translator
+        Google::Cloud::Translate.new version: :v2, project_id: ENV["CLOUD_PROJECT_ID"]
+    end
 end
