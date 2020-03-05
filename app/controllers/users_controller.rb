@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:index, :show, :new, :create]
     before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
+    before_action :current_user, only: [:show, :add_contact]
 
     def index
         @users = User.all
@@ -43,7 +44,6 @@ class UsersController < ApplicationController
     end
 
     def add_contact
-        @current_user = User.find(session[:user_id])
         current_user.contacts << @user
         redirect_to @current_user
     end
@@ -56,5 +56,9 @@ class UsersController < ApplicationController
 
     def set_user
         @user = User.find(params[:id])
+    end
+
+    def current_user
+        @current_user = User.find(session[:user_id])
     end
 end
