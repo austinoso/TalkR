@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
             ActionCable.server.broadcast "room_channel", content: @msg.content
         end
 
-        redirect_to @msg.chat
+        #redirect_to @msg.chat
+        redirect_to chats_path
     end
 
     def destroy

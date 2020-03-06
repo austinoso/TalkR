@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   get 'chats/:id/remove_user/:user_id', to: 'chats#remove_user', as: 'remove_user'
 
   post '/users/:id/add_contact', to: 'users#add_contact', as: 'add_contact'
+
+  get 'users/:id/contacts', to: 'users#contacts', as: 'contacts'
+  # post '/users/:id/contacts', to: 'users#contacts', as: 'contacts'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

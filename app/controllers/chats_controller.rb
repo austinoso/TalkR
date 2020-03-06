@@ -4,12 +4,15 @@ class ChatsController < ApplicationController
     before_action :chat_owner_authorize, only: [:edit, :update, :destroy]
 
     def index
-        @chats = Chat.all.select { |chat| chat.users.include? current_user }
+        @chats = current_user.chats
+        @chat = Chat.find( session[:chat_view_id] ? session[:chat_view_id]: 1 )
+        @message = @chat.messages.build(user_id: session[:user_id])
+        @messages = @chat.messages[0...-1]
     end
 
     def show
-        @message = @chat.messages.build(user_id: session[:user_id])
-        @messages = @chat.messages[0...-1]
+        session[:chat_view_id] = params[:id]
+        redirect_to chats_path
     end
 
     def edit

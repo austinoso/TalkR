@@ -11,11 +11,30 @@
   </head>
 
   <body>
-      <% if session[:user_id] %>
-      <%= link_to 'All Chats', chats_path %>
-      <%= link_to 'New Chat', new_chat_path %>
-      <%= link_to 'Log Out', logout_path , method: "DELETE" %>
-    <% end %>
+
+  <% if session[:user_id] %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to current_user.name, current_user, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item">
+          <%= link_to "My Chats", chats_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%# link_to "Contacts", contacts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Logout', logout_path , method: "DELETE", class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <% end %>
+
     <%= yield %>
   </body>
 
