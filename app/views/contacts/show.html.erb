@@ -1,2 +1,2 @@
 <h1>Contact: <%= @contact.name %></h1>
-<%= button_to "Delete Contact", contact_path(@contact), method: :delete %>
+<%= button_to "Delete Contact", contact_path(@contact), method: :delete, data: { confirm: "Are you sure?" } %>
