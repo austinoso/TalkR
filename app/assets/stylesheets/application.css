@@ -14,8 +14,18 @@
  *= require_self
  */
 
- nav {
-     z-index: 200;
-     position: fixed;
-     margin: 0;
+
+ .blue-bkg {
+    background-color: #1E4565;
+    min-height: 100vh;
+ }
+
+ .text-center {
+     text-align: center;
+ }
+
+ .form-title {
+     color: white;
+     text-align: center;
+     padding: 40px;
  }

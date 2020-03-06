@@ -1,3 +1,27 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.user-form {
+    padding: 30px;
+    margin: 0px 500px;
+    background-color:  white;
+    border-radius: 4px;
+}
+
+
+.user-form text_field {
+    background-color: #F2F2F2;
+}
+
+
+#login {
+    padding: 20px;
+    color: white;
+}
+
+#login a {
+    color: white;
+    
+}

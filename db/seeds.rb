@@ -9,7 +9,7 @@
 # require 'rest-client'
 # require 'json'
 
-User.destroy_all
+#User.destroy_all
 
 # 5.times do
 #     Language.create(name: Faker::Nation.language)

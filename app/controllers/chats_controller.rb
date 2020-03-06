@@ -4,10 +4,10 @@ class ChatsController < ApplicationController
     before_action :chat_owner_authorize, only: [:edit, :update, :destroy]
 
     def index
-        @chats = current_user.chats
-        @chat = Chat.find( session[:chat_view_id] ? session[:chat_view_id]: 1 )
+        @chats = current_user.channels
+        @chat = Chat.find( session[:chat_view_id] ? session[:chat_view_id]: current_user.chats.last )
         @message = @chat.messages.build(user_id: session[:user_id])
-        @messages = @chat.messages[0...-1]
+        @messages = @chat.messages - [@chat.messages.last]
     end
 
     def show

@@ -18,6 +18,7 @@
     <div id="messages">
         <% @messages.each do |msg| %>
             <p><strong><%= msg.user.name %></strong></p>
+            <p class="og-txt"><%= msg.content %></p>
             <p><%= @chat.translator.translate msg.content, to: current_user.language.code %></p>
         <% end %>
     </div>

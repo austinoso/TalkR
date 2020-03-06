@@ -17,5 +17,8 @@ class User < ApplicationRecord
     has_many :contacted, foreign_key: :contacted_id, class_name: "Contact"
     has_many :contacts, through: :contacted
 
+    def channels
+        Chat.all.select { |chat| chat.users.include? self }
+    end
 end
 
