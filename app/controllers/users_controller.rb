@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        session.delete(:user_id)
         @user.destroy
         redirect_to register_path
     end

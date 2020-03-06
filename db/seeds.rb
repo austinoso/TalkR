@@ -20,7 +20,7 @@ translator = Google::Cloud::Translate.new version: :v2, project_id: ENV["CLOUD_P
 languages = translator.languages "en"
 languages.each { |lang| Language.find_or_create_by(name: lang.name, code: lang.code)}
 
-10.times do
+15.times do
     User.create(
         name: Faker::Name.name, 
         email: Faker::Internet.email, 
@@ -31,8 +31,3 @@ languages.each { |lang| Language.find_or_create_by(name: lang.name, code: lang.c
         language: Language.all.sample
         )
 end
-
-# message = Message.create(content: "hello world", user_id: 1, chat_id: 1)
-# key = 'trnsl.1.1.20200305T004037Z.35253689b9ae86b3.38c70dc7d0c2007f85bb58467068c73356687475'
-# result = RestClient.get("https://translate.yandex.net/api/v1.5/tr.json/translate", headers={'key' => key, 'text' => 'hello', 'lang' => 'es'})
-# parse = JSON.parse(result)
