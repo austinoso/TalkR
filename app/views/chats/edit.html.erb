@@ -1,27 +1,32 @@
-<h1>Edit Chat</h1>
+<div class="page">
+    <h1>Edit Chat</h1>
 
-<%= form_for @chat do |f| %>
-    <%= f.hidden_field :owner_id %>
-    <%= f.label "Custom Chat Name"%>
-    <%= f.text_field :name %>
-    <%= f.submit "Save Changes" %>
-<% end %>
+    <%= form_for @chat do |f| %>
+        <%= f.hidden_field :owner_id %>
+        <%= f.label "Custom Chat Name"%>
+        <%= f.text_field :name %>
+        <%= f.submit "Save Changes", class: "btn btn-primary btn-sm" %>
+    <% end %>
 
-<%= link_to "Back to chat (changes won't save)", @chat %>
+    <%= link_to "Back to chat (changes won't save)", @chat %>
 
-<h1>Current Users</h1>
+    <h1>Current Users</h1>
 
-<% @current_users.each do |user| %>
-    <%= link_to user.name, user %>
-    <%= link_to 'remove user', remove_user_path(id: @chat.id, user_id: user.id) %>
-<% end %>
+    <% @current_users.each do |user| %>
+        <%= link_to user.name, user %>
+        <%= link_to 'Remove User', remove_user_path(id: @chat.id, user_id: user.id), class: "btn btn-danger btn-sm" %>
+    <% end %>
 
-<h1>Add Users</h1>
+    <h1>Add Users</h1>
 
 
-<% @users.each do |user| %>
-    <%= link_to user.name, user %>
-    <%= link_to "Add to Chat", add_user_path(id: @chat.id, user_id: user.id) %>
-<% end %>
+    <% current_user.contacts.each do |user| %>
+        <div>
+            <%= link_to user.name, user %>
+            <%= link_to "Add to Chat", add_user_path(id: @chat.id, user_id: user.id), class: "btn btn-primary btn-sm" %>
+        </div>
+    <% end %>
 
-<p><%= link_to "delete chat", @chat, method: :delete %></p>
+    <p><%= link_to "delete chat", @chat, method: :delete %></p>
+
+</div>

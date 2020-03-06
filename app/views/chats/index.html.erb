@@ -12,14 +12,23 @@
     <div id="new-chat">
         <h3><%= link_to "New Chat +", new_chat_path %></h3>
     </div>
+    <div class=chat-info>
+        <p><%= @chat.chat_name if @chat %>
+            <% if @chat.owner_id == session[:user_id] && @chat %>
+                <span><%= link_to "Edit Chat", edit_chat_path(@chat) %></span>
+            <% end %>
+        </p>
+    </div>
 </div>
 
 <div id="right">
     <div id="messages">
         <% @messages.each do |msg| %>
+        <div>
             <p><strong><%= msg.user.name %></strong></p>
             <p class="og-txt"><%= msg.content %></p>
             <p><%= @chat.translator.translate msg.content, to: current_user.language.code %></p>
+        </div>
         <% end if @messages %>
     </div>
 
@@ -31,8 +40,8 @@
                 <%= f.hidden_field :chat_id %>
                 <%= f.submit "Send", :class => 'btn btn-primary mb-2' %>
             </div>
-
         <% end %>
+
     </div>
 </div>
 
