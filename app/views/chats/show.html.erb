@@ -3,7 +3,7 @@
 
 <% @messages.each do |msg| %>
     <p><strong><%= msg.user.name %></strong></p>
-    <p><%= @chat.translator.translate msg.content, to: 'en' %></p>
+    <p><%= msg.content %></p>
 <% end %>
 
 <%= form_for @message do |f| %>
