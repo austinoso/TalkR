@@ -1,5 +1,6 @@
 <p><%= flash[:success] %></p>
 <h1>Profile for: <%= @user.name %></h1>
+<img src="<%=Faker::Avatar.image%>">
 <p>Email: <%= @user.email %></p>
 <p>Bio: <%= @user.bio %></p>
 <p>Country: <%= @user.country %></p>
