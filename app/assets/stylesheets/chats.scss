@@ -12,6 +12,7 @@
       position: absolute;
       top: 0px;
       left: 0;
+      bottom: 0;
       width: 25%;
       overflow-y: scroll; 
     }
@@ -37,9 +38,6 @@
 
     }
   
-  h4{
-    padding: 10px 0; 
-  }
   
   .tool-card{
     border: 2px solid black;
@@ -68,8 +66,17 @@
   }
 
   #new-chat {
-    padding: 0px 10px;
+    color: white;
+    padding: 5px 5px;
     text-align: center;
+    background-color: #227ECC;
+    border-radius: 5px;
+    margin: 20px 40px ;
+  }
+
+  #new-chat a {
+    color: white;
+    font-size: 20px;
   }
 
   #messages {
