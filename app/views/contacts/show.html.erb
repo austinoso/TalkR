@@ -1,2 +1,2 @@
 <h1>Contact: <%= @contact.name %></h1>
-<%= link_to "Remove From Contacts", @contact.name, method: :delete %>
+<%= button_to "Delete Contact", contact_path(@contact), method: :delete %>

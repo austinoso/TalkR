@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     def add_contact
 
         current_user.contacts << User.find(params[:id]) if !current_user.contacts.include? User.find(params[:id])
-        redirect_to current_user
+        redirect_to contacts_path
     end
 
     def contacts

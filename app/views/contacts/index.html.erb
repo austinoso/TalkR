@@ -1,4 +1,6 @@
 Your Contacts: 
 <% @contacts.each do |c| %>
-<ul><li><%= link_to c.name, c %></li></ul>
+<ul><li><%= link_to c.name, c %>
+<%= button_to "Delete Contact", contact_path(c), method: :delete %>
+</li></ul>
     <% end %>
