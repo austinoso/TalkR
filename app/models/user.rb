@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
 
     has_many :chat_users
-    has_many :chats, foreign_key: :owner_id
+    has_many :chats, foreign_key: :owner_id, dependent: :destroy
     has_many :messages
     belongs_to :language
 

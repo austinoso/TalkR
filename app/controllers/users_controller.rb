@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:index, :show, :new, :create]
-    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact, :contacts]
-    before_action :current_user, only: [:show, :add_contact, :contacts]
+    skip_before_action :authorize, only: [:index, :new, :create]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
     before_action :user_authorize, only: [:edit, :update, :destroy, :contacts]
-
-
+    before_action :no_register, only: [:new]
+    
     def index
         @users = User.all
     end
@@ -41,6 +40,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        session.delete(:user_id)
         @user.destroy
         redirect_to register_path
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     def add_contact
         current_user.contacts << @user
         current_user.contacts = current_user.contacts.uniq
-        redirect_to @current_user
+        redirect_to current_user
     end
 
     def contacts
@@ -64,11 +64,8 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def current_user
-        @current_user = User.find(session[:user_id]) if session[:user_id]
-    end
-
     def user_authorize
+        set_user
         redirect_to users_path if @user.id != session[:user_id]
         flash[:no_access] = "You don't have access!" if @user.id != session[:user_id]
     end
