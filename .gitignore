@@ -40,3 +40,5 @@ config/local_env.yml
 
 /config/local_env.yml
 /config/google_cloud.json
+config/cred.json
+config/local_env.yml

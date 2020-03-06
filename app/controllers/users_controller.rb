@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 
     def add_contact
         current_user.contacts << @user
+        current_user.contacts.uniq!{|c| c.user_id}
         redirect_to @current_user
     end
 
