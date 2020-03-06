@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :messages, except: [:new, :edit, :update]
   resources :chats
   resources :users, except: [:new]
-  resources :contacts, only: [:index]
+  resources :contacts, only: [:index, :destroy]
 
   get '/login', to: 'sessions#new', as: 'login'
   get '/register', to: 'users#new', as: 'register'
