@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
     def add_contact
         current_user.contacts << @user
-        current_user.contacts.uniq!{|c| c.user_id}
+        current_user.contacts = current_user.contacts.uniq
         redirect_to @current_user
     end
 
@@ -62,9 +62,7 @@ class UsersController < ApplicationController
     end
 
     def current_user
-        if session[:user_id]
-            @current_user = User.find(session[:user_id])
-        end
+        @current_user = User.find(session[:user_id]) if session[:user_id]
     end
 
     def user_authorize
