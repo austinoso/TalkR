@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:index, :new, :create]
-    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
+    before_action :set_user, only: [:show, :edit, :update, :destroy     ]
     before_action :user_authorize, only: [:edit, :update, :destroy, :contacts]
     before_action :no_register, only: [:new]
 
@@ -46,8 +46,8 @@ class UsersController < ApplicationController
     end
 
     def add_contact
-        current_user.contacts << @user
-        current_user.contacts = current_user.contacts.uniq
+
+        current_user.contacts << User.find(params[:id]) if !current_user.contacts.include? User.find(params[:id])
         redirect_to current_user
     end
 
