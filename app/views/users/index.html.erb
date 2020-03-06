@@ -1,16 +1,24 @@
-<p><%= flash[:no_access] %></p>
+<div class="user-form">
+
+<%= flash[:no_access] %><br>
 
 <ul><% @users.each do |user| %>
     <% if current_user != user %>
     <li><%= user.name %>
     <br>Country: <%= user.country %>
     <br>Language: <%= user.language.name %>
+    <br>
+    <br>
             <%= form_tag(add_contact_path(user)) do %>
             <%= submit_tag "Add contact!", :class => 'btn btn-primary'%>
             <% end %>
+            <br>
             <%= form_tag(user_path(user)) do %>
             <%= submit_tag "View Profile", :class => 'btn btn-primary'%>
             <% end %>
+            <br>
+            <br>
     <% end %>
     </li>
 <% end %></ul>
+</div>
