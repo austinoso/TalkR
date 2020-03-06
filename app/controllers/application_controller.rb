@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
-    before_action :authorize, :no_register
+    before_action :authorize
   
     def current_user
       @user = User.find(session[:user_id]) if session[:user_id]
@@ -12,10 +12,5 @@ class ApplicationController < ActionController::Base
   
     def authorize
       redirect_to login_path if !logged_in?
-    end
-    
-    def no_register
-      current_user
-      redirect_to @user if logged_in?
-    end
+    end    
 end

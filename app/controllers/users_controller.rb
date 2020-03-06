@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
     before_action :user_authorize, only: [:edit, :update, :destroy, :contacts]
     before_action :no_register, only: [:new]
-    
+
     def index
         @users = User.all
     end
@@ -68,5 +68,10 @@ class UsersController < ApplicationController
         set_user
         redirect_to users_path if @user.id != session[:user_id]
         flash[:no_access] = "You don't have access!" if @user.id != session[:user_id]
+    end
+
+    def no_register
+        current_user
+        redirect_to @user if logged_in?
     end
 end
