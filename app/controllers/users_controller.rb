@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:index, :show, :new, :create]
-    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact]
-    before_action :current_user, only: [:show, :add_contact]
-    before_action :user_authorize, only: [:edit, :update, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :add_contact, :contacts]
+    before_action :current_user, only: [:show, :add_contact, :contacts]
+    before_action :user_authorize, only: [:edit, :update, :destroy, :contacts]
 
 
     def index
@@ -49,6 +49,9 @@ class UsersController < ApplicationController
         current_user.contacts << @user
         current_user.contacts = current_user.contacts.uniq
         redirect_to @current_user
+    end
+
+    def contacts
     end
 
     private
