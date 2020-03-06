@@ -14,6 +14,8 @@
  *= require_self
  */
 
-body {
-    background-color: aqua;
-}
+ nav {
+     z-index: 200;
+     position: fixed;
+     margin: 0;
+ }

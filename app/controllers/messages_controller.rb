@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
         @msg = Message.create(msg_params)
         @msg.user_id = session
 
-        redirect_to @msg.chat
+        redirect_to chats_path
     end
 
     def destroy

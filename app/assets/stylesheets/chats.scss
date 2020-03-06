@@ -2,3 +2,84 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.app_page1 {
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 768px){
+    #left {
+      position: absolute;
+      top: 0px;
+      left: 0;
+      bottom: 0;
+      width: 25%;
+      overflow-y: scroll; 
+    }
+    
+    #right {
+      position: absolute;
+      top: 0px;
+      bottom: 0;
+      right: 0;
+      overflow-y: scroll;
+      width: 75%;
+    }
+  }
+  
+  #left {
+    margin-top: 55px;
+  }
+  
+  #right {
+    border-bottom: 155px solid #ebebeb;
+    padding-right: 35px;
+    margin-top: 55px;
+
+    }
+  
+  
+  .tool-card{
+    border: 2px solid black;
+    padding: 10px 10px;
+    margin: 10px 0;
+  }
+
+  #message-form {
+    position: fixed;
+    bottom: 10px;
+    margin-left: 35px;
+    padding-right: 35px;
+    width: 100%;
+
+  }
+
+  #message-form textarea {
+      width: 60%;
+  }
+
+  .single-chat {
+    background-color:#e3e3e3;
+    padding: 20px 10px;
+    margin: 0;
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  #new-chat {
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    background-color: #227ECC;
+    border-radius: 5px;
+    margin: 20px 40px ;
+  }
+
+  #new-chat a {
+    color: white;
+    font-size: 20px;
+  }
+
+  #messages {
+    padding-left: 35px;
+    padding-right: 35px;
+  }

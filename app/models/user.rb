@@ -17,6 +17,5 @@ class User < ApplicationRecord
     has_many :contacted, foreign_key: :contacted_id, class_name: "Contact"
     has_many :contacts, through: :contacted
 
-
 end
 
