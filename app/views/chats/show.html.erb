@@ -1,6 +1,9 @@
+<div id="msg">
+</div>
+
 <% @messages.each do |msg| %>
     <p><strong><%= msg.user.name %></strong></p>
-    <p><%= @chat.translator.translate msg.content, to: current_user.language.code %></p>
+    <%= msg.content %>
 <% end %>
 
 <%= form_for @message do |f| %>
