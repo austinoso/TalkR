@@ -1,6 +1,6 @@
-<%= stylesheet_link_tag 'chats', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<div class="view-chats">
+<div class="app_page1">
+<div id="left">
     <% @chats.each do |chat| %>
         <%= link_to chat, :action => 'go' do %>
             <div class="single-chat"> 
@@ -8,8 +8,30 @@
                 <p><%= chat.messages.last.content if chat.messages.last %></p>
             </div>
         <% end %>
-        <hr>
     <% end %>
+    <div id="new-chat">
+        <h3><%= link_to "New Chat +", new_chat_path %></h3>
+    </div>
 </div>
 
+<div id="right">
+    <div id="messages">
+        <% @messages.each do |msg| %>
+            <p><strong><%= msg.user.name %></strong></p>
+            <p><%= @chat.translator.translate msg.content, to: 'en' %></p>
+        <% end %>
+    </div>
+
+    <div id="message-form">
+        <%= form_for @message do |f| %>
+            <div class="form-group">
+                <%= f.text_area :content, placeholder: "Send Message", :class => 'form-control' %>
+                <%= f.hidden_field :user_id %>
+                <%= f.hidden_field :chat_id %>
+                <%= f.submit "Send", :class => 'btn btn-primary mb-2' %>
+            </div>
+
+        <% end %>
+    </div>
+</div>
 
