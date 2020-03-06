@@ -1,14 +1,22 @@
-<% if flash[:no_user] %>
-    <p><%= flash[:no_user] %></p>
-<% end %>
-<p><%= link_to 'Log In', login_path %></p>
 
-<h1>Sign Up</h1>
 
-<% if @user.errors.any? %>
-  <% @user.errors.full_messages.each do |e| %>
-    <p><%= e %></p>
+<div class="blue-bkg">
+  <% if flash[:no_user] %>
+      <p><%= flash[:no_user] %></p>
   <% end %>
-<% end %>
 
-<%= render 'form' %>
+  <h1 class="form-title">Sign Up</h1>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |e| %>
+      <p><%= e %></p>
+    <% end %>
+  <% end %>
+  <div class="user-form">
+    <%= render 'form' %> 
+  </div>
+  <div class="text-center" id="login">
+    <p>Already have an account? <strong><%= link_to 'Log In', login_path %></p>
+  </div>
+
+</div>
