@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :messages, except: [:new, :edit, :update]
   resources :chats
   resources :users, except: [:new]
+  resources :contacts, only: [:index]
 
   get '/login', to: 'sessions#new', as: 'login'
   get '/register', to: 'users#new', as: 'register'
@@ -14,7 +15,5 @@ Rails.application.routes.draw do
 
   post '/users/:id/add_contact', to: 'users#add_contact', as: 'add_contact'
 
-  get 'users/:id/contacts', to: 'users#contacts', as: 'contacts'
-  # post '/users/:id/contacts', to: 'users#contacts', as: 'contacts'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
