@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:index, :new, :create]
-    before_action :set_user, only: [:show, :edit, :update, :destroy     ]
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
     before_action :user_authorize, only: [:edit, :update, :destroy, :contacts]
     before_action :no_register, only: [:new]
 
