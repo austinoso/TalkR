@@ -5,9 +5,8 @@ class ChatsController < ApplicationController
 
     def index
         @chats = current_user.channels
-        @chat = Chat.find( session[:chat_view_id] ? session[:chat_view_id]: current_user.chats.last )
-        @message = @chat.messages.build(user_id: session[:user_id])
-        @messages = @chat.messages - [@chat.messages.last]
+        @chat = Chat.find(session[:chat_view_id]) if session[:chat_view_id]
+        @messages = @chat.messages if @chat.messages
     end
 
     def show

@@ -20,11 +20,11 @@
             <p><strong><%= msg.user.name %></strong></p>
             <p class="og-txt"><%= msg.content %></p>
             <p><%= @chat.translator.translate msg.content, to: current_user.language.code %></p>
-        <% end %>
+        <% end if @messages %>
     </div>
 
     <div id="message-form">
-        <%= form_for @message do |f| %>
+        <%= form_with url: messages_path do |f| %>
             <div class="form-group">
                 <%= f.text_area :content, placeholder: "Send Message", :class => 'form-control' %>
                 <%= f.hidden_field :user_id %>

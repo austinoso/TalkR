@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new', as: 'register'
   get "/" => redirect("/chats")
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
   get 'chats/:id/add_user/user_id', to: 'chats#add_user', as: 'add_user'
   get 'chats/:id/remove_user/:user_id', to: 'chats#remove_user', as: 'remove_user'
 

@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @msg = Message.create(msg_params)
+        @msg = Message.create(content: msg_params[:content], user_id: current_user.id, chat_id: session[:chat_view_id])
         @msg.user_id = session
 
         if @msg.save
@@ -21,10 +21,8 @@ class MessagesController < ApplicationController
     private
 
     def msg_params
-        params.require(:message).permit(
-            :content,
-            :user_id,
-            :chat_id
+        params.permit(
+            :content
         )
     end
 end
