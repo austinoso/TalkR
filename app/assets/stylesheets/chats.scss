@@ -19,10 +19,9 @@
     
     #right {
       position: absolute;
-      top: 0px;
+      top: 0px; 
       bottom: 0;
       right: 0;
-      overflow-y: scroll;
       width: 75%;
     }
   }
@@ -32,10 +31,7 @@
   }
   
   #right {
-    border-bottom: 155px solid #ebebeb;
-    padding-right: 35px;
     margin-top: 55px;
-
     }
   
   
@@ -46,16 +42,34 @@
   }
 
   #message-form {
-    position: fixed;
-    bottom: 10px;
     margin-left: 35px;
-    padding-right: 35px;
     width: 100%;
-
+    background-color: whitesmoke;
+    padding: 0px 30px;
+    margin: 0;
+    min-height: 20%;
+    max-height: 20%;
   }
 
   #message-form textarea {
-      width: 60%;
+      width: 90%;
+      margin: auto  ;
+      resize: none;
+      display: inline-block;
+      vertical-align: middle;
+  }
+
+  #message-form submit {
+    display: inline;
+
+  }
+
+  #message-form form {
+    margin: auto 0;
+    vertical-align: middle;
+    display: inline; 
+    max-height: 20%;
+    padding: 0 50%;
   }
 
   .single-chat {
@@ -82,4 +96,13 @@
   #messages {
     padding-left: 35px;
     padding-right: 35px;
+    overflow-y: scroll;
+    height: 80%;
+  }
+
+  .og-txt {
+    color: lightslategrey;
+    font-size: 12px;
+    line-height: 0px;
+    margin: 0em;
   }
