@@ -16,6 +16,8 @@
 <% end %>
 
 <!-- @user here is the user being added to the current/logged in user's list of contacts -->
+<% if @current_user != @user %>
 <p>  <%= form_tag(add_contact_path(@user)) do %>
     <%= submit_tag "Add contact!", :class => 'btn btn-primary'%>
     <% end %></p>
+    <% end %>
