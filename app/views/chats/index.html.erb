@@ -13,10 +13,12 @@
         <h3><%= link_to "New Chat +", new_chat_path %></h3>
     </div>
     <div class=chat-info>
+    <% if !!@chat %>
         <p><%= @chat.chat_name if @chat %>
             <% if @chat.owner_id == session[:user_id] && @chat %>
                 <span><%= link_to "Edit Chat", edit_chat_path(@chat) %></span>
             <% end %>
+    <% end %>
         </p>
     </div>
 </div>
