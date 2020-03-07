@@ -8,6 +8,7 @@ User.destroy_all
     User.create(
         name: Faker::Name.name, 
         email: Faker::Internet.email, 
+        avatar: Faker::Avatar.image,
         password: "password", 
         password_confirmation: "password", 
         bio: Faker::Quote.most_interesting_man_in_the_world, 

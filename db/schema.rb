@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_232850) do
+ActiveRecord::Schema.define(version: 2020_03_07_193501) do
 
   create_table "chat_users", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_232850) do
     t.string "password_digest"
     t.string "password_confirmation"
     t.integer "language_id"
+    t.string "avatar"
     t.index ["language_id"], name: "index_users_on_language_id"
   end
 
