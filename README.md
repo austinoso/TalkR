@@ -4,3 +4,8 @@ Messenger Application made with Ruby on Rails that allows users to create an acc
 
 ## Video Demonstration
 [Link](https://vimeo.com/491942432)
+
+## Technologies in Project
+<ul>
+<li>Ruby on Rails</li>
+</ul>
