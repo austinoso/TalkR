@@ -25,9 +25,10 @@
     <%# f.label :country %>
     <%= f.text_field :country, placeholder: "Where are you located?", class: "form-control" %>
   </div>
+  
   <div class="form-group">
-    <%# f.label "Select Your Preferred Language:" %>
     <%= f.collection_select :language_id, Language.all, :id, :name, {:prompt => "Select a Language"}, class: "form-control" %>
+    <% byebug %>
   </div>
 
   <%= f.submit "Sign Up", :class => 'btn btn-primary btn-lg btn-block' %>
